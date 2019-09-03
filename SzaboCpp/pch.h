@@ -15,4 +15,7 @@
 #include <fstream>
 #include <vector>
 #include <boost\algorithm\string.hpp>
+#include <algorithm>
+#include <map>
+
 #endif //PCH_H

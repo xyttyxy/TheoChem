@@ -18,5 +18,21 @@ void read_input(std::string filename, Params &params) {
 }
 
 void read_mol(std::string filename) {
-
+	std::ifstream input_file;
+	input_file.open(filename, std::ios::in);
+	if (input_file.is_open()) {
+		std::string line;
+		while (std::getline(input_file, line)) {
+			std::vector<std::string> atom;
+			boost::split(atom, line, boost::is_any_of("\t "));
+			// trim
+			std::for_each(
+				atom.begin(), 
+				atom.end(), 
+				[](std::string str) {
+				boost::algorithm::trim(str);
+			}
+			);
+		}
+	}
 }

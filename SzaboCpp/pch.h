@@ -14,6 +14,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <array>
 #include <boost\algorithm\string.hpp>
 #include <algorithm>
 #include <map>

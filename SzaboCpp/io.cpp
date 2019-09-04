@@ -17,22 +17,26 @@ void read_input(std::string filename, Params &params) {
 	input_file.close();
 }
 
-void read_mol(std::string filename) {
+void read_mol(std::string filename, Atoms &atoms) {
 	std::ifstream input_file;
 	input_file.open(filename, std::ios::in);
 	if (input_file.is_open()) {
+		PeriodicTable pTable;
 		std::string line;
 		while (std::getline(input_file, line)) {
-			std::vector<std::string> atom;
-			boost::split(atom, line, boost::is_any_of("\t "));
+			std::vector<std::string> atomInfo;
+			boost::split(atomInfo, line, boost::is_any_of("\t "));
 			// trim
 			std::for_each(
-				atom.begin(), 
-				atom.end(), 
+				atomInfo.begin(), 
+				atomInfo.end(), 
 				[](std::string str) {
 				boost::algorithm::trim(str);
 			}
 			);
+			std::array<double, 3> coords = { stod(atomInfo[1]), stod(atomInfo[2]), stod(atomInfo[3]) };
+			Atom atom(pTable, atomInfo[0], coords);
+			atoms.addAtom(atom);
 		}
 	}
 }

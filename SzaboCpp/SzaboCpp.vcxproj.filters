@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="INCAR.test" />
+    <Text Include="Table.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="POSCAR.test" />

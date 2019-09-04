@@ -4,13 +4,17 @@
 #include "pch.h"
 #include "io.h"
 #include "params.h"
-
+#include "geom.h"
 int main()
 {
 	Params params;
+	PeriodicTable pTable;
+	Atoms atoms;
 	read_input("INCAR.test", params);
-	std::cout << params.get_param("EDIFF") << std::endl;
-	std::cout << params.get_param("EDIFFG") << std::endl;
+	read_mol("POSCAR.test", atoms);
+	//std::cout << atoms.getAtomCount() << std::endl;
+	std::cout << (atoms.getAtom(0)).getSymbol() << std::endl;
+	std::cout << (atoms.getAtom(1)).getSymbol() << std::endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
